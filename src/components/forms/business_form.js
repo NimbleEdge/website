@@ -99,7 +99,7 @@ const Container = styled.div`
   }
 `;
 
-export const Form = ({}) => {
+export const Form = ({ }) => {
   const [error, setError] = useState("");
   const [formData, setForm] = useState({
     firstName: "",
@@ -112,7 +112,7 @@ export const Form = ({}) => {
 
   const handleOnChange = (e) => {
     setError("");
-    setForm({...formData, [e.target.name]: e.target.value});
+    setForm({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (event) => {
@@ -154,14 +154,14 @@ export const Form = ({}) => {
     fetch(businessForm.action, {
       method: businessForm.method,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({"form-name": "business", ...formData}),
+      body: encode({ "form-name": "business", ...formData }),
     })
-    .then((res) => {
-      location.reload();
-    })
-    .catch((err) => {
-      setError("")
-    });
+      .then((res) => {
+        window.location.reload();
+      })
+      .catch((err) => {
+        setError("")
+      });
   };
 
   return (
@@ -180,7 +180,7 @@ export const Form = ({}) => {
           <input type="text" name="lastName" placeholder="Last Name" />
         </div>
         <div>
-            <input type="text" name="organisationName" placeholder="Organisation Name"/>
+          <input type="text" name="organisationName" placeholder="Organisation Name" />
         </div>
         <div>
           <input type="email" name="emailId" placeholder="Business Email address" />

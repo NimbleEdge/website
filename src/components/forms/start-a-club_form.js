@@ -81,7 +81,7 @@ const Container = styled.div`
   }
 `;
 
-export const Form = ({}) => {
+export const Form = ({ }) => {
   const [formData, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -93,7 +93,7 @@ export const Form = ({}) => {
 
   const handleOnChange = (e) => {
     setError("");
-    setForm({...formData, [e.target.name]: e.target.value});
+    setForm({ ...formData, [e.target.name]: e.target.value });
   }
 
   const handleSubmit = (event) => {
@@ -124,7 +124,7 @@ export const Form = ({}) => {
       return;
     }
 
-    if(isBlank(collegeName)) {
+    if (isBlank(collegeName)) {
       setError("*Please enter college name.")
     }
 
@@ -133,19 +133,19 @@ export const Form = ({}) => {
     fetch(startAClubForm.action, {
       method: startAClubForm.method,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({"form-name": "start-a-club", ...formData}),
+      body: encode({ "form-name": "start-a-club", ...formData }),
     })
-    .then(res => {
-      location.reload();
-    })
-    .catch(err => {
-      location.reload();
-    })
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => {
+        window.location.reload();
+      })
   }
 
   return (
     <Container className="flex-row">
-      <form 
+      <form
         className="flex-column"
         name="start-a-club"
         data-netify="true"

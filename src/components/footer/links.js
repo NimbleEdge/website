@@ -116,14 +116,14 @@ export const Links = () => {
 
   const handleChange = (event) => {
     setError("");
-    setFormData({...formData, [event.target.name]: event.target.value});
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   }
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const emailId = event.target[1].value;
 
-    if(!isValidEmailId(emailId)) {
+    if (!isValidEmailId(emailId)) {
       setError("*Please enter correct email Id.");
       return;
     }
@@ -133,14 +133,14 @@ export const Links = () => {
     fetch(newsLetterForm.action, {
       method: newsLetterForm.method,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({"form-name": "newsletter", ...formData})
+      body: encode({ "form-name": "newsletter", ...formData })
     })
-    .then(res => {
-      location.reload();
-    })
-    .catch(err => {
-      location.reload();
-    });
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => {
+        window.location.reload();
+      });
   }
 
   return (

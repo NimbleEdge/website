@@ -99,7 +99,7 @@ const Container = styled.div`
   }
 `;
 
-export const Form = ({}) => {
+export const Form = ({ }) => {
   const [error, setError] = useState("");
   const [formData, setForm] = useState({
     firstName: "",
@@ -111,7 +111,7 @@ export const Form = ({}) => {
 
   const handleOnChange = (e) => {
     setError("");
-    setForm({...formData, [e.target.name]: e.target.value});
+    setForm({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (event) => {
@@ -152,14 +152,14 @@ export const Form = ({}) => {
     fetch(contactForm.action, {
       method: contactForm.method,
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({"form-name": "contact-us", ...formData}),
+      body: encode({ "form-name": "contact-us", ...formData }),
     })
-    .then((res) => {
-      location.reload();
-    })
-    .catch((err) => {
-      setError("")
-    });
+      .then((res) => {
+        window.location.reload();
+      })
+      .catch((err) => {
+        setError("")
+      });
   };
 
   return (
